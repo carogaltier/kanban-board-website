@@ -1,0 +1,127 @@
+/* ---------------- GENERAL ATRIBBUTES --------------------- */
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
+	height: 100vh !important;
+	width: 100vw !important;
+	display: grid;
+	min-height: 100vh;
+}
+
+.bg{
+	background: url(../img/bg.jpg) no-repeat center fixed;
+	background-size: cover;
+	
+}
+
+/* --------------------- LOGO -------------------------- */
+
+.logo_text {
+	font-family: 'Comfortaa', cursive;
+	font-size: 1.2em;
+}
+
+.icon {
+	padding-left: 0.5em;
+}
+
+
+.btn-sign-up {
+	background-color: #fc527cd5;
+	color: #fff;
+}
+
+.btn-sign-up:hover {
+	background-color: #fc527c;
+	color:#fff;
+}
+
+.my-card{
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  	cursor: pointer;
+}
+
+.my-card:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  color: #007bff;
+  text-decoration: none;
+}
+
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%; 
+  display: flex;
+  align-items: end;
+  justify-content: center; 
+}
+
+
+/* ------------------- MAIN CONTENT -------------------- */
+.fc-content span {
+	color: #fff;
+}
+
+/* --------------------- PROJECT CARD ------------------------------ */
+.widget-subheading {
+    font-size: 0.75em;
+}
+
+.scroll-area {
+	max-height: 65vh;
+    height: auto;
+	padding-bottom: 0.5em;
+    overflow-x: hidden;
+}
+
+.todo-indicator {
+    position: absolute;
+    width: 4px;
+    height: 60%;
+    border-radius: 0.3rem;
+    left: 0.625rem;
+    top: 20%;
+    opacity: .6;
+    transition: opacity .2s;
+}
+
+.widget-content .widget-content-wrapper {
+    display: flex;
+    flex: 1;
+    position: relative;
+    align-items: center;
+}
+
+.swa12-confirm, .swa12-cancel {
+	margin: 0 0.3em !important;
+}
+
+.hidden {
+    display: none;
+}
+.unhidden {
+    display: block;
+}
+
+.font-small {
+	font-size: 0.8em;
+}
+
+#newProject:target {
+	-webkit-transition: all 1s;
+	transition: all 1s;
+	opacity: 1;
+	pointer-events: auto;
+}
+
