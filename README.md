@@ -1,4 +1,4 @@
-<h1 align="center">Kanban Board Website</h1>
+<h1 align="center">Kanban Board + Calendar Website</h1>
 
 <p align="center">This is just a simple website that counts with a kanban board and a calendar where you can add projects, events and tasks.</p>
 
