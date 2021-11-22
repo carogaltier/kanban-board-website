@@ -6,7 +6,7 @@
 
 - [Repo](https://github.com/carogaltier/KanbanBoard_website "Kanban Board Website Repo")
 
-- [Live](http://kanban_kalendar.tk "Live View")
+- [Demo](http://www.kanban_kalendar.tk/main.php "Live View")
 
 
 ## Description
