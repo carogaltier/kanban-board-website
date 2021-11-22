@@ -25,8 +25,6 @@ if (isset($_SESSION['user'])) {
 		$sql = "INSERT INTO calendar(id_user, title, description, start_date, end_date, colour) 
 		values ('$id_user', '$title', '$description', '$start_date', '$end_date', '$colour')";
 		
-		echo $sql;
-		
 		$query = $db->prepare( $sql );
 		if ($query == false) {
 			print_r($db->errorInfo());
@@ -40,5 +38,7 @@ if (isset($_SESSION['user'])) {
 		}
 
 	}
-	header('Location: '.$_SERVER['HTTP_REFERER']);	
+	if(isset($_SERVER['HTTP_REFERER'])){
+		header("Location:".$_SERVER['HTTP_REFERER']."");
+	}
 ?>
