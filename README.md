@@ -23,23 +23,35 @@ In the "db" folder you will find the necessary file (kanban.sql) to create the k
 
 ## Screenshots
 
+### MAIN PAGE
+
 ![Home Page](/screenshots/main.jpg "Home Page")
+
+### SIGN-UP FORM
 
 ![Sign Up](/screenshots/signup.jpg "Sign Up form")
 
+### LOG-IN FORM
+
 ![Log in](/screenshots/login.jpg "Log in form")
+
+### HOME PAGE
 
 ![Content](/screenshots/content.jpg "Content Page")
 
+### PROJECTS AND TASKS
+
 ![Tasks](/screenshots/tasks.jpg "Tasks and projects")
 
-![Modals](/screenshots/modals.jpg "Modal")
+### CALENDAR
 
 ![Calendar](/screenshots/calendar.jpg "Calendar")
 
 ![Week](/screenshots/week.jpg "Weekly Calendar")
 
 ![List](/screenshots/list.jpg "List of events")
+
+### SUMMARY OF THE DAY
 
 ![Today](/screenshots/today.jpg "Summary of the day")
 
