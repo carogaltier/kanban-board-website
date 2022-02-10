@@ -4,7 +4,7 @@
 
 ## Links
 
-- [Repo](https://github.com/carogaltier/KanbanBoard_website "Kanban Board Website Repo")
+- [Repository](https://github.com/carogaltier/KanbanBoard_website "Kanban Board Website Repo")
 
 - [Demo](https://kanban-kalendar.tk/main.php)
 
