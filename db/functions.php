@@ -1,8 +1,8 @@
 <?php
     class Database{
-        private $hostname = 'localhost';
+        private $hostname = 'localhost:3306';
         private $username = 'root';
-        private $password = '';
+        private $password = 'root';
         private $database = 'kanban';
         private $connection;
 

@@ -20,8 +20,8 @@ $projects = $projects->fetchAll();
 if($_SERVER['REQUEST_METHOD'] == 'GET') {
 	if(isset($_GET['idProject'])) {	
 
-		$id_project_for_task = filter_var(htmlspecialchars($_GET['idProject']), FILTER_SANITIZE_STRING);	
-		$id_user = filter_var(htmlspecialchars($_SESSION['id_user']), FILTER_SANITIZE_STRING);
+		$id_project_for_task = filter_var(htmlspecialchars($_GET['idProject']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);	
+		$id_user = filter_var(htmlspecialchars($_SESSION['id_user']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$id_user = (int)$id_user; 	
 
 		$show_tasks = $connection->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM tasks WHERE id_user = ? AND id_project = ? ORDER BY deadline DESC") ;			
@@ -37,14 +37,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// --------------------- ADDING NEW PROJECTS -------------------------
 	if ( isset($_POST['project_name']) AND isset($_POST['start_date']) AND isset($_POST['end_date']) ) {
 
-		$project_name = filter_var(htmlspecialchars($_POST['project_name']), FILTER_SANITIZE_STRING);
-		$project_description = filter_var(htmlspecialchars($_POST['project_description']), FILTER_SANITIZE_STRING);
-		$project_colour = filter_var(htmlspecialchars($_POST['project_colour']), FILTER_SANITIZE_STRING);
-		$start_date= filter_var(htmlspecialchars($_POST['start_date']), FILTER_SANITIZE_STRING); 
+		$project_name = filter_var(htmlspecialchars($_POST['project_name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$project_description = filter_var(htmlspecialchars($_POST['project_description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$project_colour = filter_var(htmlspecialchars($_POST['project_colour']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$start_date= filter_var(htmlspecialchars($_POST['start_date']), FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
 		$start_date= date("Y-m-d", strtotime($start_date));
-		$end_date= filter_var(htmlspecialchars($_POST['end_date']), FILTER_SANITIZE_STRING); 
+		$end_date= filter_var(htmlspecialchars($_POST['end_date']), FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
 		$end_date= date("Y-m-d", strtotime($end_date));
-		$id_user = filter_var(htmlspecialchars($_POST['id_user']), FILTER_SANITIZE_STRING);
+		$id_user = filter_var(htmlspecialchars($_POST['id_user']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$id_user = (int)$id_user; 
 
 
@@ -71,7 +71,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// -------------------- DELETING PROJECT --------------------------
 	if(isset($_POST['id_project'])) {	
-		$id_project = filter_var(htmlspecialchars($_POST['id_project']), FILTER_SANITIZE_STRING);		
+		$id_project = filter_var(htmlspecialchars($_POST['id_project']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);		
 		$del_project = $connection->prepare("DELETE FROM projects WHERE id_project =?") ;			
 		$del_project->execute(array($id_project));
 		if ($del_project!==FALSE) {
@@ -93,13 +93,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// --------------------------- EDITING PROJECT -------------------------------
 	if(isset($_POST['edit_id_project'])) {	
-		$edit_id_project = filter_var(htmlspecialchars($_POST['edit_id_project']), FILTER_SANITIZE_STRING);
-		$edit_project_name = filter_var(htmlspecialchars($_POST['edit_project_name']), FILTER_SANITIZE_STRING);
-		$edit_project_description = filter_var(htmlspecialchars($_POST['edit_project_description']), FILTER_SANITIZE_STRING);
-		$edit_project_colour = filter_var(htmlspecialchars($_POST['edit_project_colour']), FILTER_SANITIZE_STRING);
-		$edit_start_date= filter_var(htmlspecialchars($_POST['edit_start_date']), FILTER_SANITIZE_STRING); 
+		$edit_id_project = filter_var(htmlspecialchars($_POST['edit_id_project']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$edit_project_name = filter_var(htmlspecialchars($_POST['edit_project_name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$edit_project_description = filter_var(htmlspecialchars($_POST['edit_project_description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$edit_project_colour = filter_var(htmlspecialchars($_POST['edit_project_colour']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$edit_start_date= filter_var(htmlspecialchars($_POST['edit_start_date']), FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
 		$edit_start_date= date("Y-m-d", strtotime($edit_start_date));
-		$edit_end_date= filter_var(htmlspecialchars($_POST['edit_end_date']), FILTER_SANITIZE_STRING); 
+		$edit_end_date= filter_var(htmlspecialchars($_POST['edit_end_date']), FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
 		$edit_end_date= date("Y-m-d", strtotime($edit_end_date));
 
 		
@@ -126,16 +126,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// --------------------------- ADDING NEW TASK -------------------------------
 	if ( isset($_POST['task_name']) AND isset($_POST['id_task_project']) AND isset($_POST['id_user']) ) {
-		$id_project = filter_var(htmlspecialchars($_POST['id_task_project']), FILTER_SANITIZE_STRING);
+		$id_project = filter_var(htmlspecialchars($_POST['id_task_project']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$id_project = (int)$id_project; 
-		$id_user = filter_var(htmlspecialchars($_POST['id_user']), FILTER_SANITIZE_STRING);
+		$id_user = filter_var(htmlspecialchars($_POST['id_user']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$id_user = (int)$id_user; 
-		$task_status = filter_var(htmlspecialchars($_POST['task_status']), FILTER_SANITIZE_STRING);
+		$task_status = filter_var(htmlspecialchars($_POST['task_status']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$task_status = (int)$task_status; 
-		$task_name = filter_var(htmlspecialchars($_POST['task_name']), FILTER_SANITIZE_STRING);
-		$task_description = filter_var(htmlspecialchars($_POST['task_description']), FILTER_SANITIZE_STRING);
-		$task_colour = filter_var(htmlspecialchars($_POST['task_colour']), FILTER_SANITIZE_STRING);
-		$deadline= filter_var(htmlspecialchars($_POST['deadline']), FILTER_SANITIZE_STRING); 
+		$task_name = filter_var(htmlspecialchars($_POST['task_name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$task_description = filter_var(htmlspecialchars($_POST['task_description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$task_colour = filter_var(htmlspecialchars($_POST['task_colour']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$deadline= filter_var(htmlspecialchars($_POST['deadline']), FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
 		$deadline= date("Y-m-d", strtotime($deadline));
 
 		$statement = $connection->prepare('INSERT INTO tasks (id_user, id_project, task_status, task_name, task_description, task_colour, deadline) VALUES
@@ -162,8 +162,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// -------------------- DELETING TASK --------------------------
 	if(isset($_POST['id_task'])) {	
-		$id_task = filter_var(htmlspecialchars($_POST['id_task']), FILTER_SANITIZE_STRING);	
-		$id_project = filter_var(htmlspecialchars($_POST['id_project']), FILTER_SANITIZE_STRING);	
+		$id_task = filter_var(htmlspecialchars($_POST['id_task']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);	
+		$id_project = filter_var(htmlspecialchars($_POST['id_project']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);	
 		$del_task = $connection->prepare("DELETE FROM tasks WHERE id_task =?") ;			
 		$del_task->execute(array($id_task));
 		if ($del_task!==FALSE) {
@@ -186,12 +186,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// --------------------------- EDITING TASK -------------------------------
 	if(isset($_POST['edit_id_task'])) {	
-		$id_project = filter_var(htmlspecialchars($_POST['id_task_project']), FILTER_SANITIZE_STRING);
-		$edit_id_task = filter_var(htmlspecialchars($_POST['edit_id_task']), FILTER_SANITIZE_STRING);
-		$edit_task_name = filter_var(htmlspecialchars($_POST['edit_task_name']), FILTER_SANITIZE_STRING);
-		$edit_task_description = filter_var(htmlspecialchars($_POST['edit_task_description']), FILTER_SANITIZE_STRING);
-		$edit_task_colour = filter_var(htmlspecialchars($_POST['edit_task_colour']), FILTER_SANITIZE_STRING);
-		$deadline= filter_var(htmlspecialchars($_POST['deadline']), FILTER_SANITIZE_STRING); 
+		$id_project = filter_var(htmlspecialchars($_POST['id_task_project']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$edit_id_task = filter_var(htmlspecialchars($_POST['edit_id_task']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$edit_task_name = filter_var(htmlspecialchars($_POST['edit_task_name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$edit_task_description = filter_var(htmlspecialchars($_POST['edit_task_description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$edit_task_colour = filter_var(htmlspecialchars($_POST['edit_task_colour']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$deadline= filter_var(htmlspecialchars($_POST['deadline']), FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
 		$deadline= date("Y-m-d", strtotime($deadline));
 
 		
@@ -218,9 +218,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// --------------------------- MOVING TASK TO THE RIGHT -------------------------------
 	if(isset($_POST['id_task_right'])) {	
-		$id_project_right = filter_var(htmlspecialchars($_POST['id_project_right']), FILTER_SANITIZE_STRING);
-		$id_task_right = filter_var(htmlspecialchars($_POST['id_task_right']), FILTER_SANITIZE_STRING);
-		$task_status = filter_var(htmlspecialchars($_POST['task_status']), FILTER_SANITIZE_STRING);
+		$id_project_right = filter_var(htmlspecialchars($_POST['id_project_right']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$id_task_right = filter_var(htmlspecialchars($_POST['id_task_right']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$task_status = filter_var(htmlspecialchars($_POST['task_status']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$new_status = ((int)$task_status + 1);
 				
 		$statement = $connection->prepare('UPDATE tasks SET task_status=? WHERE id_task=?');
@@ -245,9 +245,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// --------------------------- MOVING TASK TO THE LEFT -------------------------------
 	if(isset($_POST['id_task_left'])) {	
-		$id_project_left = filter_var(htmlspecialchars($_POST['id_project_left']), FILTER_SANITIZE_STRING);
-		$id_task_left = filter_var(htmlspecialchars($_POST['id_task_left']), FILTER_SANITIZE_STRING);
-		$task_status = filter_var(htmlspecialchars($_POST['task_status']), FILTER_SANITIZE_STRING);
+		$id_project_left = filter_var(htmlspecialchars($_POST['id_project_left']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$id_task_left = filter_var(htmlspecialchars($_POST['id_task_left']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$task_status = filter_var(htmlspecialchars($_POST['task_status']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$new_status = ((int)$task_status - 1);
 				
 		$statement = $connection->prepare('UPDATE tasks SET task_status=? WHERE id_task=?');
